@@ -1,0 +1,17 @@
+-- CREATE TABLE users (
+--   id UUID NOT NULL PRIMARY KEY,
+--   name VARCHAR (200) NOT NULL,
+--   location VARCHAR,
+--   handle VARCHAR,
+--   repos_url VARCHAR,
+--   twitter VARCHAR,
+--   company VARCHAR,
+--   website VARCHAR,
+--   email VARCHAR
+--   )
+
+-- CREATE TABLE matches (
+--   id UUID NOT NULL PRIMARY KEY,
+--   matched_user INTEGER,
+--   is_matched BOOLEAN
+--   )
