@@ -1,3 +1,4 @@
+const db = require('../models/userModel.js');
 const cookieController = {};
 
 cookieController.saveToken = (req, res, next) => {
