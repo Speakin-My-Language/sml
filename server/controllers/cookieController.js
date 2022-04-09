@@ -1,9 +1,9 @@
 const db = require('../models/userModel.js');
-
 const cookieController = {};
 
-cookieController.methodThatWeDefine = (req, res, next) => {
-
+cookieController.saveToken = (req, res, next) => {
+  res.cookie('auth_token', res.locals.token);
+  return next();
 }
 
 module.exports = cookieController;

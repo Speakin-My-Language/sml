@@ -15,6 +15,8 @@ module.exports = {
     new HtmlWebpackPlugin({ template: '/client/index.html' })
   ],
   devServer: {
+    host: 'localhost',
+    port: 3000,
     static: {
       directory: path.join(__dirname, 'client'),
       publicPath: '/',

@@ -1,14 +1,20 @@
 const path = require('path')
+const cors = require('cors');
 const express = require('express');
+const cookieParser = require('cookie-parser');
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
+
+app.use(cors());
+app.use(cookieParser());
+app.use(express.json());
 
 // user router 
 const userRouter = require(path.join(__dirname, './routers/userRouter'))
 app.use('/user', userRouter);
 
-// signup router ?
+// signup router
 const signupRouter = require(path.join(__dirname, './routers/signupRouter'))
 app.use('/signup', signupRouter);
 
