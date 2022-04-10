@@ -25,6 +25,9 @@ function ProgramContainer() {
   // const [userList, setUserList] = React.useState(fetch('http://localhost:3000?get user list'));
   const [userList, setUserList] = React.useState(users);
   const [currentUser, setCurrentUser] = React.useState();
+  const [message, setMessage] = React.useState('Loading');
+
+  // Create child component
   const userProfile = () => (
     <div>
       <div>{`Current User: ${currentUser.name}`}</div>
