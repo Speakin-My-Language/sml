@@ -22,7 +22,7 @@ const users = [
 
 function ProgramContainer() {
   const [choice, setChoice] = React.useState({});
-  // const [userList, setUserList] = React.useState(fetch('http://localhost:3000?get user list'));
+  // const [userList, setUserList] = React.useState(fetch('http://localhost:3000/newProgrammer'));
   const [userList, setUserList] = React.useState(users);
   const [currentUser, setCurrentUser] = React.useState();
   const [message, setMessage] = React.useState('Loading');
@@ -56,11 +56,6 @@ function ProgramContainer() {
     getNextUser();
   }, [choice]);
 
-  React.useEffect(() => {
-    if (choice !== {}) {
-      fetch('http://localhost:3000/newProgrammer');
-    } else fetch('http://localhost:3000?');
-  }, [choice]);
 
   return (
     <div id="programContainer">
