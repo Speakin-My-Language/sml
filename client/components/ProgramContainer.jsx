@@ -59,7 +59,6 @@ function ProgramContainer() {
 
   return (
     <div id="programContainer">
-      <a href='/?matches'>Matches</a>
       <div>ProgramContainer</div>
       <div>{message}</div>
       <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</button>
