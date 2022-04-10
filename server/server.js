@@ -1,7 +1,8 @@
-const path = require('path')
+const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
@@ -17,6 +18,10 @@ app.use('/user', userRouter);
 // signup router
 const signupRouter = require(path.join(__dirname, './routers/signupRouter'))
 app.use('/signup', signupRouter);
+
+app.get('/', (req, res) => {
+  res.status(200).sendFile(path.resolve(__dirname, '../client/index.html'));
+});
 
 // pairProgrammer router 
 const pairProgrammerRouter = require(path.join(__dirname, './routers/pairProgrammerRouter'))
