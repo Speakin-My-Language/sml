@@ -1,3 +1,4 @@
+/* eslint-disable import/no-dynamic-require */
 const path = require('path');
 const cors = require('cors');
 const express = require('express');
@@ -12,37 +13,36 @@ app.use(cookieParser());
 app.use(express.json());
 
 // user router
-const userRouter = require(path.join(__dirname, './routers/userRouter'))
+const userRouter = require(path.join(__dirname, './routers/userRouter'));
 app.use('/user', userRouter);
 
 // // signup router
-const signupRouter = require(path.join(__dirname, './routers/signupRouter'))
+const signupRouter = require(path.join(__dirname, './routers/signupRouter'));
 app.use('/signup', signupRouter);
 
-
-// // pairProgram router 
-const pairProgramRouter = require(path.join(__dirname, './routers/pairProgramRouter'))
+// pairProgram router
+const pairProgramRouter = require(path.join(__dirname, './routers/pairProgramRouter'));
 app.use('/pairProgram', pairProgramRouter);
 
-// // newProgrammer router 
-const newProgrammerRouter = require(path.join(__dirname, './routers/newProgrammerRouter'))
+// newProgrammer router
+const newProgrammerRouter = require(path.join(__dirname, './routers/newProgrammerRouter'));
 app.use('/newProgrammer', newProgrammerRouter);
 
-// matches router 
-const matchesRouter = require(path.join(__dirname, './routers/matchesRouter'))
+// matches router
+const matchesRouter = require(path.join(__dirname, './routers/matchesRouter'));
 app.use('/matches', matchesRouter);
 
-// // logout router ?
-const logoutRouter = require(path.join(__dirname, './routers/logoutRouter'))
+// logout router ?
+const logoutRouter = require(path.join(__dirname, './routers/logoutRouter'));
 app.use('/logout', logoutRouter);
 
-// // login router ?
-const loginRouter = require(path.join(__dirname, './routers/loginRouter'))
+// login router ?
+const loginRouter = require(path.join(__dirname, './routers/loginRouter'));
 app.use('/login', loginRouter);
 
-// // route for landing page
+// route for landing page
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, './client/index.html'))
+  res.status(200).sendFile(path.join(__dirname, './client/index.html'));
 });
 
 // catch-all route handler for any requests to an unknown route
@@ -55,11 +55,11 @@ app.use((err, req, res, next) => {
     status: 500,
     message: { err: 'An error occurred' },
   };
-  const errorObj = Object.assign({}, defaultErr, err);  
+  const errorObj = Object.assign({}, defaultErr, err);
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-//Beware of server (she's eavesdropping...)
+// Beware of server (she's eavesdropping...)
 app.listen(PORT, (req, res) => {
-  console.log(`Beware on ${PORT}`)
-})
+  console.log(`Beware on ${PORT}`);
+});
