@@ -12,7 +12,7 @@ router.get('/github/auth', async (req, res) => {
 });
 
 // redirect back to main page after successful authorization
-router.get('/github/callback/return', (req, res) => res.status(200).redirect('http://localhost:8080'));
+router.get('/github/callback/return', (req, res) => res.status(200).redirect('http://localhost:3000/pairProgram'));
 
 // user specific token from gitHub
 router.get('/github/callback', authController.getToken, cookieController.saveToken, authController.getProfile, async (req, res) => {
