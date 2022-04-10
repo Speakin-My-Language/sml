@@ -33,7 +33,7 @@ authController.getProfile = async (req, res, next) => {
       method: 'GET',
       headers: {
         Accept: 'application/json',
-        Authorization: `token ${res.locals.access_token}`,
+        Authorization: `token ${req.cookies.auth_token}`,
       },
     });
     const profileInfo = await profileInfoJSON.json();
