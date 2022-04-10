@@ -16,11 +16,11 @@ function ProfileContainer() {
   const [counter, setCounter] = React.useState();
 
   React.useEffect(() => {
-    fetch('http://localhost:3000/?');
+    fetch('http://localhost:3000/user/');
   }, []);
 
   React.useEffect(() => {
-    fetch('http://localhost:3000/?');
+    fetch('http://localhost:3000/user', {type: 'patch'});
   }, [counter]);
 
   function clickHandler() {

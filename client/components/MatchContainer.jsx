@@ -25,7 +25,7 @@ function MatchContainer() {
   const [background, setBackground] = React.useState('https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg');
 
   useEffect(() => {
-    fetch('http://localhost:3000');
+    fetch('http://localhost:3000/matches');
   }, []);
 
   return (

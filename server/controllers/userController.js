@@ -1,7 +1,7 @@
 const db = require('../models/userModel.js');
 
 const userController = {};
-
+// check if cookie exists, if it does return the profile attached to it
 userController.getUserProfile = async (req, res, next) => {
   console.log('req.params', req.params);
   const { node_id } = req.params;

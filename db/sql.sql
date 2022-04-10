@@ -16,7 +16,7 @@
 
 -- CREATE TABLE matches (
 --   id UUID NOT NULL PRIMARY KEY,
---   matched_user VARCHAR,
+--   matched_user VARCHAR, <- change to uuid eventually
 --   is_matched BOOLEAN
 --   )
 

@@ -2,6 +2,8 @@ const db = require('../models/userModel.js');
 
 const matchesController = {};
 
+// rewrite how getMatches is working state isn't saved anywhere
+// user id as first column
 matchesController.getMatches = async (req, res, next) => {
   try {
     const getMatchesQ = 'SELECT * FROM matches;';
