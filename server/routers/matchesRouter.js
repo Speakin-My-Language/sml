@@ -1,14 +1,9 @@
 const express = require('express');
 const matchesRouter = express.Router();
 
-const matchesRouter = require('../controllers/matchesController');
+const matchesController = require('../controllers/matchesController');
 
-matchesRouter.get()
+// matchesRouter.get()
 
-matchesRouter.post()
-
-matchesRouter.patch()
-
-matchesRouter.delete()
 
 module.exports = matchesRouter;

@@ -3,12 +3,13 @@ const userRouter = express.Router();
 
 const userController = require('../controllers/userController');
 
-userRouter.get()
+userRouter.get('/', userController.getUserProfile, (req, res) => {
+  return res.status(200).json(res.locals.userProfile);
+});
 
-userRouter.post()
+// userRouter.post()
 
-userRouter.patch()
+// userRouter.patch()
 
-userRouter.delete()
 
 module.exports = userRouter;

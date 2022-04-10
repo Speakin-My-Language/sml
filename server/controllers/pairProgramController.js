@@ -1,9 +1,9 @@
-const db = require('../models/userModel.js');
+// const db = require('../models/userModel.js');
 
-const pairProgramController = {};
+// const pairProgramController = {};
 
-pairProgramController.methodThatWeDefine = (req, res, next) => {
+// pairProgramController.methodThatWeDefine = (req, res, next) => {
 
-}
+// }
 
-module.exports = pairProgramController;
+// module.exports = pairProgramController;

@@ -7,11 +7,15 @@
 --   twitter VARCHAR,
 --   company VARCHAR,
 --   website VARCHAR,
---   email VARCHAR
+--   email VARCHAR,
+--   bio TEXT
 --   )
+
+-- how to change something in an SQL table: https://www.geeksforgeeks.org/postgresql-change-column-type/
+--how to add something to an SQL table: https://www.w3schools.com/sql/sql_alter.asp
 
 -- CREATE TABLE matches (
 --   id UUID NOT NULL PRIMARY KEY,
---   matched_user INTEGER,
+--   matched_user VARCHAR,
 --   is_matched BOOLEAN
 --   )
