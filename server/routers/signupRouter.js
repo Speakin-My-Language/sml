@@ -23,7 +23,7 @@ router.get('/github/callback', authController.getToken, cookieController.saveTok
   console.log(req.cookies);
   console.log(res.locals.profile);
   console.log(res.locals.repos);
-  res.status(200).redirect('http://localhost:3000/pairProgram');
+  return res.status(200).redirect('http://localhost:3000/pairProgram');
 });
 
 module.exports = router;

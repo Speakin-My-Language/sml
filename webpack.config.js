@@ -23,14 +23,6 @@ module.exports = {
         target: 'http://localhost:3000',
         logLevel: 'debug',
       },
-      '/api/*': {
-        target: 'http://localhost:3000',
-        logLevel: 'debug',
-      },
-      '/test/*': {
-        target: 'http://localhost:3000',
-        logLevel: 'debug',
-      },
       '/signup/*': {
         target: 'http://localhost:3000',
         logLevel: 'debug',
