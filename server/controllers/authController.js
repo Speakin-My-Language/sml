@@ -1,24 +1,3 @@
-// const fetch = require('node-fetch');
-
-// const authController = {};
-
-// authController.authorize = async (req, res, next) => {
-//   const requestToken = req.query.code;
-//   const url = `http://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_ID}&code=${requestToken}&scope=user:read`
-//   let token;
-//   try {
-//     token = await fetch(url, {method: 'post'})
-//   } catch (err) {
-//     return next(err);
-//   }
-//   console.log(token);
-//   res.locals.token = token;
-//   return next();
-// }
-
-// module.exports = authController;
-
-
 const fetch = require('node-fetch');
 require('dotenv').config();
 
@@ -26,7 +5,7 @@ const authController = {};
 
 authController.getToken = async (req, res, next) => {
   const requestToken = req.query.code;
-  const url = `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_ID}&code=${requestToken}&scope=user:r`;
+  const url = `https://github.com/login/oauth/access_token?client_id=${process.env.GITHUB_CLIENT_ID}&client_secret=${process.env.GITHUB_SECRET_ID}&code=${requestToken}&scope=user:read`;
 
   try {
     const tokenJSON = await fetch(url, {
@@ -35,7 +14,8 @@ authController.getToken = async (req, res, next) => {
     });
     const token = await tokenJSON.json();
     res.locals.access_token = token.access_token;
-    console.log(token);
+    console.log(token.access_token);
+    // console.log(token);
     return next();
   } catch (err) {
     return next({
@@ -53,7 +33,7 @@ authController.getProfile = async (req, res, next) => {
       method: 'GET',
       headers: {
         Accept: 'application/json',
-        Authorization: 'token ' + res.locals.access_token,
+        Authorization: `token ${res.locals.access_token}`,
       },
     });
     const profileInfo = await profileInfoJSON.json();
