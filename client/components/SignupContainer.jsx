@@ -9,7 +9,7 @@ function SignupContainer() {
 
   return (
     <div id="signupContainer">
-      signupContainer
+      <p>signupContainer</p>
       <button onClick={oAuthGo} type="button">Sign Up</button>
     </div>
   );
