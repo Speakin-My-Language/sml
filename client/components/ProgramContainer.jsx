@@ -18,7 +18,7 @@ const users = [
       'C': 9000,
     },
   },
-]
+];
 
 function ProgramContainer() {
   const [choice, setChoice] = React.useState({});
@@ -57,13 +57,14 @@ function ProgramContainer() {
   }, [choice]);
 
   React.useEffect(() => {
-    if (choice) {
-      fetch('http://localhost:3000?');
+    if (choice !== {}) {
+      fetch('http://localhost:3000/newProgrammer');
     } else fetch('http://localhost:3000?');
   }, [choice]);
 
   return (
     <div id="programContainer">
+      <a href='/?matches'>Matches</a>
       <div>ProgramContainer</div>
       <div>{message}</div>
       <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</button>
