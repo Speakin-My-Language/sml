@@ -12,22 +12,29 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin(),
-    new HtmlWebpackPlugin({ template: '/client/index.html' })
+    new HtmlWebpackPlugin({ template: '/client/index.html' }),
   ],
   devServer: {
-    host: 'localhost',
-    port: 3000,
     static: {
       directory: path.join(__dirname, 'client'),
       publicPath: '/',
     },
     proxy: {
       '/assets/*': {
-        target: 'http://localhost:3000', 
-        logLevel: 'debug' 
+        target: 'http://localhost:3000',
+        logLevel: 'debug',
       },
       '/api/*': {
-        target: 'http://localhost:3000'
+        target: 'http://localhost:3000',
+        logLevel: 'debug',
+      },
+      '/test/*': {
+        target: 'http://localhost:3000',
+        logLevel: 'debug',
+      },
+      '/signup/*': {
+        target: 'http://localhost:3000',
+        logLevel: 'debug',
       },
     },
     compress: true,

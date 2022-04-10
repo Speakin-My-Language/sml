@@ -1,10 +1,13 @@
+import Landing from './components/LandingContainer';
+
 const React = require('react');
 const fetch = require('node-fetch');
 
 function App() {
   return (
-    <div id="landing">
-      Hello
+    <div id="landingContainer">
+      App Container
+      <Landing />
     </div>
   );
 }

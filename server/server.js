@@ -1,7 +1,8 @@
-const path = require('path')
+const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
+
 const app = express();
 const PORT = 3000;
 require('dotenv').config();
@@ -17,6 +18,7 @@ app.use('/user', userRouter);
 // // signup router
 const signupRouter = require(path.join(__dirname, './routers/signupRouter'))
 app.use('/signup', signupRouter);
+
 
 // // pairProgram router 
 const pairProgramRouter = require(path.join(__dirname, './routers/pairProgramRouter'))
@@ -40,7 +42,7 @@ app.use('/login', loginRouter);
 
 // // route for landing page
 app.get('/', (req, res) => {
-  res.status(200).send(path.join(__dirname, './client/index.html'))
+  res.status(200).sendFile(path.join(__dirname, './client/index.html'))
 });
 
 // catch-all route handler for any requests to an unknown route
