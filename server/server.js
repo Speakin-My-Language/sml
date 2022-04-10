@@ -10,19 +10,19 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// user router 
+// user router
 const userRouter = require(path.join(__dirname, './routers/userRouter'))
 app.use('/user', userRouter);
 
-// signup router
+// // signup router
 const signupRouter = require(path.join(__dirname, './routers/signupRouter'))
 app.use('/signup', signupRouter);
 
-// pairProgrammer router 
-const pairProgrammerRouter = require(path.join(__dirname, './routers/pairProgrammerRouter'))
-app.use('/pairProgrammer', pairProgrammerRouter);
+// // pairProgram router 
+const pairProgramRouter = require(path.join(__dirname, './routers/pairProgramRouter'))
+app.use('/pairProgram', pairProgramRouter);
 
-// newProgrammer router 
+// // newProgrammer router 
 const newProgrammerRouter = require(path.join(__dirname, './routers/newProgrammerRouter'))
 app.use('/newProgrammer', newProgrammerRouter);
 
@@ -30,18 +30,23 @@ app.use('/newProgrammer', newProgrammerRouter);
 const matchesRouter = require(path.join(__dirname, './routers/matchesRouter'))
 app.use('/matches', matchesRouter);
 
-// logout router ?
+// // logout router ?
 const logoutRouter = require(path.join(__dirname, './routers/logoutRouter'))
 app.use('/logout', logoutRouter);
 
-// login router >
+// // login router ?
 const loginRouter = require(path.join(__dirname, './routers/loginRouter'))
 app.use('/login', loginRouter);
+
+// // route for landing page
+app.get('/', (req, res) => {
+  res.status(200).send(path.join(__dirname, './client/index.html'))
+});
 
 // catch-all route handler for any requests to an unknown route
 app.use((req, res) => res.status(404).send('Looks like you\'re doomed to code alone forever'));
 
-//global error handler
+// global error handler
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',

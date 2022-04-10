@@ -1,14 +1,9 @@
 const express = require('express');
 const logoutRouter = express.Router();
 
-const logoutRouter = require('../controllers/logoutController');
+const logoutController = require('../controllers/logoutController');
 
-logoutRouter.get()
-
-logoutRouter.post()
-
-logoutRouter.patch()
-
-logoutRouter.delete()
+//what CRUD method should we use here?
+// logoutRouter.get();
 
 module.exports = logoutRouter;
