@@ -3,7 +3,7 @@ import SignupContainer from './SignupContainer';
 
 function LandingContainer() {
   const [ background, setBackground ] = React.useState('https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg')
-  
+
   // React.useEffect(() => {
   //   document.body.style.backgroundimage
   // })

@@ -70,7 +70,6 @@ authController.getLanguages = async (req, res, next) => {
       Object.keys(response).map(async (language) => {
         if (languageTotals[language]) languageTotals[language] += response[language];
         else languageTotals[language] = response[language];
-        console.log(languageTotals);
       });
       res.locals.languages = languageTotals;
     });
