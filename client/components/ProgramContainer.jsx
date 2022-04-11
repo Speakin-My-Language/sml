@@ -1,29 +1,29 @@
 import React from 'react';
 const fetch = require('node-fetch');
 
-const users = [
-  {
-    name: 'Matt',
-    languages: {
-      'Javascript': 10000,
-      'Python': 50000,
-      'C': 20000,
-    },
-  },
-  {
-    name: 'Yale',
-    languages: {
-      'Javascript': 49040,
-      'Python': 34800,
-      'C': 9000,
-    },
-  },
-];
+// const users = [
+//   {
+//     name: 'Matt',
+//     languages: {
+//       'Javascript': 10000,
+//       'Python': 50000,
+//       'C': 20000,
+//     },
+//   },
+//   {
+//     name: 'Yale',
+//     languages: {
+//       'Javascript': 49040,
+//       'Python': 34800,
+//       'C': 9000,
+//     },
+//   },
+// ];
 
 function ProgramContainer() {
   const [choice, setChoice] = React.useState({});
-  // const [userList, setUserList] = React.useState(fetch('http://localhost:3000/newProgrammer'));
-  const [userList, setUserList] = React.useState(users);
+  const [userList, setUserList] = React.useState();
+  //const [userList, setUserList] = React.useState(users);
   const [currentUser, setCurrentUser] = React.useState();
   const [message, setMessage] = React.useState('Loading');
 
@@ -36,6 +36,16 @@ function ProgramContainer() {
   );
 
   React.useEffect(() => {
+    async function asyncSetUser () {
+      let response = await fetch('http://localhost:3000/newProgrammer');
+      response = await response.json();
+      console.log('user list', response);
+      setUserList(response);
+    }
+    asyncSetUser();
+  }, []);
+  
+  React.useEffect(() => {
     async function displayNewUser() {
       if (currentUser !== undefined) {
         setMessage(userProfile());
@@ -44,27 +54,29 @@ function ProgramContainer() {
       }
     }
     displayNewUser();
-  }, [currentUser]);
+  }, [currentUser, userList]);
 
   React.useEffect(() => {
     async function getNextUser() {
-      const nextUser = userList.pop();
-      setUserList(userList);
-      setCurrentUser(nextUser);
-      // console.log(userList)
+      if (userList) {
+        const nextUser = userList.pop();
+        setUserList(userList);
+        setCurrentUser(nextUser);
+        // console.log(userList)
+      }
     }
     getNextUser();
   }, [choice]);
 
-
   return (
-    <div id="programContainer">
-      <div>ProgramContainer</div>
-      <div>{message}</div>
-      <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</button>
-      <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 1 })}>1</button>
-    </div>
-  );
-}
+      <div id="programContainer">
+        <div>ProgramContainer</div>
+        <div>{message}</div>
+        {/* <div>{userList}</div> */}
+        <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</button>
+        <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 1 })}>1</button>
+      </div>
+    );
+  }
 
 export default ProgramContainer;

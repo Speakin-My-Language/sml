@@ -6,3 +6,7 @@ INSERT INTO users
 (name, location, handle, repos_url, twitter, 
 company, website, email, node_id, bio, languages)
 VALUES ('Matt Femia', 'New York, NY', 'mattfemia', '', $5, $6, $7, $8, $9, $10, null)
+
+
+-- Check if User is in database before inserting into database (by node_id)
+SELECT u.node_id FROM users u WHERE u.node_id = $1;
