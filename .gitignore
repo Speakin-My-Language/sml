@@ -88,3 +88,6 @@ build
 
 # MAC OS
 .DS_Store
+
+# aux info
+tmp

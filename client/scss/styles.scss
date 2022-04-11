@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron&display=swap');
+
+body {
+  background: url(https://opengameart.org/sites/default/files/myGrid.png);
+  background-position: center;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align:center;
+}
+
+#landingContainer{
+  min-width: 50%;
+  border: 5px rgb(194, 191, 191);
+}
+
+#programContainer {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  // box-shadow: 5px 7px 7px rgb(180, 180, 180);
+}
+
+#sml {
+  font-size: 30px;
+  border-radius: 30px;
+  border: 4px solid rgb(190, 189, 189);
+  margin: 20px;
+  padding: 20px;
+  color: black;
+  background-color: chartreuse;
+  font-family: 'Orbitron', sans-serif;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+
+}
+
+.button {
+  margin: 20px;
+  padding: 10px;
+  background: gray;
+}
+
+.backgroundImageContainer {
+  min-Width: 800px;
+  min-Height: 800px; 
+  border-radius: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.githubButton {
+  background-color: rgb(42, 42, 42);
+}
+
+#matchButtons {
+  // background-color: rgb(189, 6, 6);
+  font-size: 16px;
+}
+
+.updateProfileBtn {
+  padding: 30px 20px
+}
+
+.updateProfileInput {
+  margin-bottom: 40px;
+}
+
+.languageChartDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+#navbar {
+  display: flex;
+  font-size: 24px;  
+  min-height: 50px;
+  min-width: 300px;
+  background-color: chartreuse;
+  font-family: 'Orbitron', sans-serif;
+  margin: 20px;
+  padding: 20px;
+  justify-content: space-around;
+  border-radius: 50px;
+  border: 4px solid rgb(190, 189, 189);
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  a:visited {
+    color: black;
+  }
+}
+
+#toptext {
+  font-size: 36px;
+  padding: 10px;
+}
+
+#bottomtext {
+  font-size: 24px;
+}
