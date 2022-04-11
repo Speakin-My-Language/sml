@@ -7,7 +7,7 @@ const matchesController = {};
 matchesController.getMatches = async (req, res, next) => {
   try {
     const getMatchesQ = 'SELECT * FROM matches m INNER JOIN users u ON m.id = u.id WHERE u.node_id = $1;';
-    const params = [ res.locals.userSession ] // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'
+    const params = [res.locals.userSession]; // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'
     const data = await db.query(getMatchesQ, params);
     console.log(data.rows);
     res.locals.userMatches = data.rows;
