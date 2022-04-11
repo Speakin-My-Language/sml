@@ -11,7 +11,7 @@ import Typography from '@mui/material/Typography';
 
 
 function LandingContainer() {
-  const [ background, setBackground ] = React.useState('https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg')
+  const [ background, setBackground ] = React.useState('https://eyeondesign.aiga.org/wp-content/uploads/2020/09/2.jpg')
 
   // React.useEffect(() => {
   //   document.body.style.backgroundimage
@@ -21,9 +21,13 @@ function LandingContainer() {
 
       <Card id="sml" sx={{ minWidth: 275 }}>
         <CardContent>
-          {/* <Typography variant="h3" component="div"> */}
+          {/* <Typography>  */}
+            <div id="toptext"> 
             Speaking My Language
-          {/* </Typography> */}
+            </div>
+            <div id="bottomtext"> 
+            Find your next pair partner
+            </div>
           <SignupContainer />
         </CardContent>
 

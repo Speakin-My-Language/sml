@@ -24,15 +24,21 @@ matchesController.getMatches = async (req, res, next) => {
 };
 
 matchesController.createMatch = async (req, res, next) => {
-  // const { node_id } = req.body
+  console.log('where is body?', req.body);
+  const { user_id, match_uuid, is_matched } = req.body;
+  // user_id is in form node_id, is_matched is in form int of 0 or 1
 
-  // TODO:
-    // SELECT uuid using node_id from req.body
+  // SELECT uuid using node_id from req.body
+  const query = 'SELECT id FROM users WHERE node_id= $1;'
+  let params = [user_id];
+  let data = await db.query(query, params)
+  console.log(data.rows) // [ { uuid } ]
+
     // INSERT into matches
-    //const createMatchQ = 'SELECT u.id FROM users u'
+    
   
   try {
-    const getMatchesQ = 'INSERT INTO matches (id, matched_user, is_matched) VALUES()';
+    // const getMatchesQ = 'INSERT INTO matches (id, matched_user, is_matched) VALUES()';
     // const params = [res.locals.userSession]; // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'
     // const data = await db.query(getMatchesQ, params);
     // console.log(data.rows);

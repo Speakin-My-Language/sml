@@ -5,8 +5,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ChartContainer from './ChartContainer'
 
-// const fetch = require('node-fetch');
+const fetch = require('node-fetch');
 
 
 function ProgramContainer() {
@@ -19,8 +20,9 @@ function ProgramContainer() {
   // Create child component
   const userProfile = () => (
     <div>
-      <div>{`Current User: ${currentUser.name}`}</div>
-      <div>{`Language: ${currentUser.languages}`}</div>
+      <div className="languageChartDiv"><ChartContainer languages={currentUser.languages} /></div>
+      <div>{`${currentUser.name}`}</div>
+      <div style={{ fontSize: '16px' }}>{`${currentUser.languages}`}</div>
     </div>
   );
 
@@ -29,7 +31,7 @@ function ProgramContainer() {
       let response = await fetch('http://localhost:3000/newProgrammer');
       response = await response.json();
       console.log('cookies', document.cookie);
-      setUserId(document.cookie.user_session);
+      setUserId(response[1]);
       const nextUser = response[0].pop();
       setUserList(response[0]);
       setCurrentUser(nextUser);
@@ -58,11 +60,13 @@ function ProgramContainer() {
     console.log('choice', choice)
     async function getNextUser() {
       if (userList) {
-        let response = await fetch('http://localhost:3000/matches', {
-          method: 'POST',
-          headers: {},
-          body: JSON.stringify({user_id: userId, match_uuid: currentUser.id, is_matched: choice.choice}),
-        });
+        // let response = await fetch('http://localhost:3000/matches', {
+        //   method: 'POST',
+        //   body: JSON.stringify({'hello': 'hello'}),
+        // });
+        // const resp = await response.json();
+        // console.log('resp', resp);
+
         const nextUser = userList.pop();
         setUserList(userList);
         setCurrentUser(nextUser);
@@ -74,7 +78,7 @@ function ProgramContainer() {
   /*
   charts.js
   */
-  
+
   // const config = {
   //   type: 'doughnut',
   //   data: data,
@@ -101,7 +105,6 @@ function ProgramContainer() {
         <CardContent>
           <div>{message}</div>
           <Button
-            data-testid='OAuth-2'
             variant='contained'
             color='secondary'
             size='large'
@@ -112,18 +115,17 @@ function ProgramContainer() {
             0
           </Button>
           <Button
-            data-testid='OAuth-2'
             variant='contained'
             color='secondary'
-            size='large'        
+            size='large'
             sx={{ borderRadius: 2, fontWeight: 'bold', margin: 5, padding: 3 }}
             className="matchButtons" 
             onClick={() => setChoice({ name: currentUser.name, choice: 0 })}
             >
               1
           </Button>
-          {/* <Button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</Button> */}
-          {/* <Button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 1 })}>1</Button> */}
+          {/* <Button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</Button>  */}
+          {/* <Button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 1 })}>1</Button>  */}
             
         </CardContent>
 

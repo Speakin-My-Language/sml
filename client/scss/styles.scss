@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bungee&family=Orbitron&display=swap');
-      
+
+body {
+  background: url(https://opengameart.org/sites/default/files/myGrid.png);
+  // background-repeat: no-repeat;
+  background-position: center;
+}
 
 #app {
   display: flex;
@@ -11,7 +16,16 @@
 
 #landingContainer{
   min-width: 50%;
-  // height: 200px;
+  // height: 200px;  
+  border: 5px rgb(194, 191, 191);
+}
+
+#programContainer {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  // box-shadow: 5px 7px 7px rgb(180, 180, 180);
 }
 
 #sml {
@@ -24,6 +38,11 @@
   background-color: chartreuse;
   font-family: 'Orbitron', sans-serif;
   // width: 80%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+
 }
 
 .button {
@@ -51,10 +70,23 @@
   font-size: 16px;
 }
 
+.updateProfileBtn {
+  padding: 30px 20px
+}
+
+.updateProfileInput {
+  margin-bottom: 40px;
+}
+
+.languageChartDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // background: gray;
+}
 #navbar {
   display: flex;
-  font-size: 24px;
-  background: blue;
+  font-size: 24px;  
   min-height: 50px;
   min-width: 300px;
   background-color: chartreuse;
@@ -77,4 +109,13 @@ a {
   a:visited {
     color: black;
   }
+}
+
+#toptext {
+  font-size: 36px;
+  padding: 10px;
+}
+
+#bottomtext {
+  font-size: 24px;
 }

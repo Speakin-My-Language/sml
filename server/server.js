@@ -1,5 +1,4 @@
 /* eslint-disable import/no-dynamic-require */
-const path = require('path');
 const cors = require('cors');
 const express = require('express');
 const cookieParser = require('cookie-parser');
