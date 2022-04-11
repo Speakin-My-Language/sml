@@ -20,7 +20,7 @@ function App() {
     }
     if (endPoint === 'matches') {
       setContainer(<Matches />);
-      setNav(<Nav />);
+      setNav(<Nav />); 
     }
     if (endPoint === 'profile') {
       setContainer(<Profile />);

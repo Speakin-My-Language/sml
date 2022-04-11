@@ -10,26 +10,54 @@ import Typography from '@mui/material/Typography';
 
 // const fetch = require('node-fetch');
 
+
 const matches = [
   {
     name: 'Yale',
-    email: 'yale@email.com',
     location: 'Yale York',
+    handle: '@yale',
+    twitter: 'yale_university',
     company: 'Yale inc',
     website: 'www.yale.com',
-    handle: '@yale',
+    email: 'yale@email.com',
+    bio: "I am Yale.",
+    languages: {
+      'Javascript': 49040,
+      'Python': 34800,
+      'C': 9000,
+    }
   },
   {
-    name: 'Matt',
-    email: 'matt@email.com',
-    location: 'Matt York',
-    company: 'Matt inc',
-    website: 'www.matt.com',
-    handle: '@matt',
+    name: 'Eric',
+    location: 'Eric Hagen-Daz',
+    handle: '@eric',
+    twitter: '@eric',
+    company: 'eric inc',
+    website: 'www.eric.com',
+    email: 'eric@email.com',
+    bio: "I am eric.",
+    languages: {
+      'Javascript': 49040,
+      'Python': 34800,
+      'C': 9000,
+    }
+  },
+  {
+    name: 'Mireille',
+    location: 'mireille Hagen-Daz',
+    handle: '@mireille',
+    twitter: '@mireille',
+    company: 'mireille inc',
+    website: 'www.mireille.com',
+    email: 'mireille@email.com',
+    bio: "I am mireille.",
+    languages: {
+      'Javascript': 49040,
+      'Python': 34800,
+      'C': 9000,
+    }
   },
 ];
-
-
 
 function MatchContainer() {
   //const background = 'https://images.pexels.com/photos/531756/pexels-photo-531756.jpeg'
@@ -49,12 +77,15 @@ function MatchContainer() {
     }
     getMatches();
   }, []);
-
   return (
     <div style={{ minHeight: '1000px' }}>
     <Card id="sml" sx={{ minWidth: 275 }}>
       <CardContent>
-          {renderedMatches}
+          {/* {renderedMatches} */}
+          <p>PAY NOW</p>
+          <p>YOU HAVE NOT PAID YET</p>
+          <p>PLEASE PAY OR OR YOU WILL</p>
+          <h1>PAIR ALONE 4eva!!!!</h1>
       </CardContent>
       </Card>
   </div>

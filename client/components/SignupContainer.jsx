@@ -17,12 +17,12 @@ function SignupContainer() {
         data-testid='OAuth-2'
         variant='contained'
         color='secondary'
-        size='large'        
+        size='large'
         startIcon={<GitHubIcon />}
         sx={{ borderRadius: 2, fontWeight: 'bold', margin: 5, padding: 3 }}
         onClick={oAuthGo}
       >
-        BIG CHONK BOY
+        sign in with github
       </Button>
     </div>
   );

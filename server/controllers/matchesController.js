@@ -1,4 +1,6 @@
 const db = require('../models/userModel.js');
+const fetch = require('node-fetch');
+require('dotenv').config();
 
 const matchesController = {};
 
@@ -24,19 +26,17 @@ matchesController.getMatches = async (req, res, next) => {
 };
 
 matchesController.createMatch = async (req, res, next) => {
-  console.log('where is body?', req.body);
-  const { user_id, match_uuid, is_matched } = req.body;
+  console.log('where is body?', req.query);
+  const { node_id, match_uuid, is_matched } = req.query;
   // user_id is in form node_id, is_matched is in form int of 0 or 1
 
   // SELECT uuid using node_id from req.body
-  const query = 'SELECT id FROM users WHERE node_id= $1;'
-  let params = [user_id];
-  let data = await db.query(query, params)
-  console.log(data.rows) // [ { uuid } ]
+  const query = 'SELECT id FROM users WHERE node_id=$1;';
+  let params = [node_id];
+  let data = await db.query(query, params);
+  console.log(data.rows); // [ { uuid } ]
 
-    // INSERT into matches
-    
-  
+  // INSERT into matches
   try {
     // const getMatchesQ = 'INSERT INTO matches (id, matched_user, is_matched) VALUES()';
     // const params = [res.locals.userSession]; // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'

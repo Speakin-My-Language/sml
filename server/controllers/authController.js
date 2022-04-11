@@ -75,7 +75,7 @@ authController.getLanguages = async (req, res, next) => {
       // console.log('Language Total Agg', languageTotals)
     });
     Promise.allSettled(resp)
-      .then(async () => {
+      .then(async (values) => {
         res.locals.languages = languageTotals;
         return next();
       });

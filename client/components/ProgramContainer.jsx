@@ -5,10 +5,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ChartContainer from './ChartContainer'
+import ChartContainer from './ChartContainer';
 
 const fetch = require('node-fetch');
-
 
 function ProgramContainer() {
   const [choice, setChoice] = React.useState({});
@@ -22,7 +21,7 @@ function ProgramContainer() {
     <div>
       <div className="languageChartDiv"><ChartContainer languages={currentUser.languages} /></div>
       <div>{`${currentUser.name}`}</div>
-      <div style={{ fontSize: '16px' }}>{`${currentUser.languages}`}</div>
+      <div style={{ fontSize: '1rem' }}>{`${currentUser.languages}`}</div>
     </div>
   );
 
@@ -60,13 +59,10 @@ function ProgramContainer() {
     console.log('choice', choice)
     async function getNextUser() {
       if (userList) {
-        // let response = await fetch('http://localhost:3000/matches', {
-        //   method: 'POST',
-        //   body: JSON.stringify({'hello': 'hello'}),
-        // });
-        // const resp = await response.json();
-        // console.log('resp', resp);
-
+        let response = await fetch(`http://localhost:3000/matches?node_id=${userId}&match_uuid=${currentUser.id}&is_matched=${choice.choice}`, {
+          method: 'POST',
+          body: JSON.stringify({ hello: 'hello' }),
+        });
         const nextUser = userList.pop();
         setUserList(userList);
         setCurrentUser(nextUser);
@@ -133,6 +129,5 @@ function ProgramContainer() {
     </div>
   );
 }
-
 
 export default ProgramContainer;
