@@ -22,8 +22,6 @@ userController.getUserProfile = async (req, res, next) => {
 };
 
 
-
-
 //** Star Wars middleware examples from Unit 10 */
 // starWarsController.getSpecies = async (req, res, next) => {
 //   const { id } = req.query;  

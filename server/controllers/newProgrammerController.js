@@ -13,7 +13,7 @@ const newProgrammerController = {};
 
 newProgrammerController.getNewProgrammer = async (req, res, next) => {
   try {
-    const getNewProgrammerQ = `SELECT languages, name FROM users;`
+    const getNewProgrammerQ = `SELECT id, languages, name FROM users;`
     const data = await db.query(getNewProgrammerQ);
     // console.log(data);
     res.locals.newProgrammer = data.rows;

@@ -24,11 +24,12 @@ router.get(
   authController.getToken,
   cookieController.saveToken,
   authController.getProfile,
+  cookieController.saveUserSession,
   authController.getLanguages,
   signupController.storeUserInDb,
   async (req, res) => {
     // console.log(res.locals.languages)
-    // console.log(req.cookies);
+    console.log('signupRouter req ', req);
     // console.log(res.locals.profile);
     // console.log(res.locals.repos);
     return res.status(200).redirect('http://localhost:3000/pairProgram');
