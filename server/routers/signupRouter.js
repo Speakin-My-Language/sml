@@ -19,11 +19,19 @@ router.get('/github/auth', async (req, res) => {
 // })
 
 // user specific token from gitHub
-router.get('/github/callback', authController.getToken, cookieController.saveToken, authController.getProfile, signupController.storeUserInDb, async (req, res) => {
-  console.log(req.cookies);
-  console.log(res.locals.profile);
-  console.log(res.locals.repos);
-  return res.status(200).redirect('http://localhost:3000/pairProgram');
-});
+router.get(
+  '/github/callback',
+  authController.getToken,
+  cookieController.saveToken,
+  authController.getProfile,
+  authController.getLanguages,
+  // signupController.storeUserInDb,
+  async (req, res) => {
+    // console.log(req.cookies);
+    // console.log(res.locals.profile);
+    // console.log(res.locals.repos);
+    return res.status(200).redirect('http://localhost:3000/pairProgram');
+  },
+);
 
 module.exports = router;
