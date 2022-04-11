@@ -25,8 +25,9 @@ router.get(
   cookieController.saveToken,
   authController.getProfile,
   authController.getLanguages,
-  // signupController.storeUserInDb,
+  signupController.storeUserInDb,
   async (req, res) => {
+    // console.log(res.locals.languages)
     // console.log(req.cookies);
     // console.log(res.locals.profile);
     // console.log(res.locals.repos);
