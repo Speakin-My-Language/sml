@@ -8,7 +8,7 @@ matchesController.getMatches = async (req, res, next) => {
   try {
     const getMatchesQ = 'SELECT * FROM matches m INNER JOIN users u ON m.id = u.id WHERE u.node_id = $1;';
     const params = [res.locals.userSession];
-    console.log(params) // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'
+    // console.log(params) // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'
     const data = await db.query(getMatchesQ, params);
     //console.log('data rows', data);
     res.locals.userMatches = JSON.stringify(data.rows);
@@ -24,6 +24,13 @@ matchesController.getMatches = async (req, res, next) => {
 };
 
 matchesController.createMatch = async (req, res, next) => {
+  // const { node_id } = req.body
+
+  // TODO:
+    // SELECT uuid using node_id from req.body
+    // INSERT into matches
+    //const createMatchQ = 'SELECT u.id FROM users u'
+  
   try {
     const getMatchesQ = 'INSERT INTO matches (id, matched_user, is_matched) VALUES()';
     // const params = [res.locals.userSession]; // -> node_id: 'MDQ6VXNlcjQ1NzAyNzE2'

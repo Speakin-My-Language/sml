@@ -12,12 +12,6 @@ router.get('/github/auth', async (req, res) => {
   return res.redirect(url);
 });
 
-// redirect back to main page after successful authorization
-// router.get('/github/callback/return', (req, res) => {
-//   console.log('')
-//   res.status(200).redirect('http://localhost:3000/pairProgram')
-// })
-
 // user specific token from gitHub
 router.get(
   '/github/callback',
@@ -28,10 +22,10 @@ router.get(
   authController.getLanguages,
   signupController.storeUserInDb,
   async (req, res) => {
-    // console.log(res.locals.languages)
-    console.log('signupRouter req ', req);
-    // console.log(res.locals.profile);
-    // console.log(res.locals.repos);
+    //console.log('languages', res.locals.languages)
+    console.log('signupRouter req ', req.cookies);
+    // console.log(res.locals.profile)
+    // console.log(res.locals.repos)
     return res.status(200).redirect('http://localhost:3000/pairProgram');
   },
 );

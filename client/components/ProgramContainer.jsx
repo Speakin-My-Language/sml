@@ -1,12 +1,20 @@
 import React from 'react';
+import Box from '@mui/material/Box';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
-const fetch = require('node-fetch');
+// const fetch = require('node-fetch');
+
 
 function ProgramContainer() {
   const [choice, setChoice] = React.useState({});
   const [userList, setUserList] = React.useState();
   const [currentUser, setCurrentUser] = React.useState();
   const [message, setMessage] = React.useState('Loading');
+  const [userId, setUserId] = React.useState();
 
   // Create child component
   const userProfile = () => (
@@ -20,8 +28,10 @@ function ProgramContainer() {
     async function asyncSetUser() {
       let response = await fetch('http://localhost:3000/newProgrammer');
       response = await response.json();
-      const nextUser = response.pop();
-      setUserList(response);
+      console.log('cookies', document.cookie);
+      setUserId(document.cookie.user_session);
+      const nextUser = response[0].pop();
+      setUserList(response[0]);
       setCurrentUser(nextUser);
     }
     asyncSetUser();
@@ -38,13 +48,20 @@ function ProgramContainer() {
     displayNewUser();
   }, [currentUser, userList]);
 
+  // {
+  //   node_id // -> SELECT uuid from users where node_id=node_id
+  //   match_uuid => currentUser.id
+  //   is_matched => choice.choice
+  // }
+
   React.useEffect(() => {
+    console.log('choice', choice)
     async function getNextUser() {
       if (userList) {
         let response = await fetch('http://localhost:3000/matches', {
-          type: 'POST',
+          method: 'POST',
           headers: {},
-          body: JSON.stringify('?'),
+          body: JSON.stringify({user_id: userId, match_uuid: currentUser.id, is_matched: choice.choice}),
         });
         const nextUser = userList.pop();
         setUserList(userList);
@@ -54,14 +71,66 @@ function ProgramContainer() {
     getNextUser();
   }, [choice]);
 
+  /*
+  charts.js
+  */
+  
+  // const config = {
+  //   type: 'doughnut',
+  //   data: data,
+  //   options: {
+  //     responsive: true,
+  //     plugins: {
+  //       legend: {
+  //         position: 'top',
+  //       },
+  //       title: {
+  //         display: true,
+  //         text: 'Chart.js Doughnut Chart'
+  //       }
+  //     }
+  //   },
+  // };
+  // const DATA_COUNT = 5;
+  // const NUMBER_CFG = {count: DATA_COUNT, min: 0, max: 100};
+
   return (
     <div id="programContainer">
-      <div>ProgramContainer</div>
-      <div>{message}</div>
-      <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</button>
-      <button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 1 })}>1</button>
+
+      <Card id="sml" sx={{ minWidth: 275 }}>
+        <CardContent>
+          <div>{message}</div>
+          <Button
+            data-testid='OAuth-2'
+            variant='contained'
+            color='secondary'
+            size='large'
+            sx={{ borderRadius: 2, fontWeight: 'bold', margin: 5, padding: 3 }}
+            className="matchButtons" 
+            onClick={() => setChoice({ name: currentUser.name, choice: 0 })}
+          >
+            0
+          </Button>
+          <Button
+            data-testid='OAuth-2'
+            variant='contained'
+            color='secondary'
+            size='large'        
+            sx={{ borderRadius: 2, fontWeight: 'bold', margin: 5, padding: 3 }}
+            className="matchButtons" 
+            onClick={() => setChoice({ name: currentUser.name, choice: 0 })}
+            >
+              1
+          </Button>
+          {/* <Button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 0 })}>0</Button> */}
+          {/* <Button type="button" className="matchButtons" onClick={() => setChoice({ name: currentUser.name, choice: 1 })}>1</Button> */}
+            
+        </CardContent>
+
+      </Card>
     </div>
   );
 }
+
 
 export default ProgramContainer;

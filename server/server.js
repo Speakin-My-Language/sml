@@ -13,36 +13,36 @@ app.use(cookieParser());
 app.use(express.json());
 
 // user router
-const userRouter = require(path.join(__dirname, './routers/userRouter'));
+const userRouter = require('./routers/userRouter');
 app.use('/user', userRouter);
 
 // // signup router
-const signupRouter = require(path.join(__dirname, './routers/signupRouter'));
+const signupRouter = require('./routers/signupRouter');
 app.use('/signup', signupRouter);
 
 // pairProgram router
-const pairProgramRouter = require(path.join(__dirname, './routers/pairProgramRouter'));
+const pairProgramRouter = require('./routers/pairProgramRouter');
 app.use('/pairProgram', pairProgramRouter);
 
 // newProgrammer router
-const newProgrammerRouter = require(path.join(__dirname, './routers/newProgrammerRouter'));
+const newProgrammerRouter = require('./routers/newProgrammerRouter');
 app.use('/newProgrammer', newProgrammerRouter);
 
 // matches router
-const matchesRouter = require(path.join(__dirname, './routers/matchesRouter'));
+const matchesRouter = require('./routers/matchesRouter');
 app.use('/matches', matchesRouter);
 
 // logout router ?
-const logoutRouter = require(path.join(__dirname, './routers/logoutRouter'));
+const logoutRouter = require('./routers/logoutRouter');
 app.use('/logout', logoutRouter);
 
 // login router ?
-const loginRouter = require(path.join(__dirname, './routers/loginRouter'));
+const loginRouter = require('./routers/loginRouter');
 app.use('/login', loginRouter);
 
 // route for landing page
 app.get('/', (req, res) => {
-  res.status(200).sendFile(path.join(__dirname, './client/index.html'));
+  res.status(200).sendFile('./client/index.html');
 });
 
 // catch-all route handler for any requests to an unknown route

@@ -31,8 +31,8 @@ function App() {
   return (
     <div id="landingContainer">
       {nav}
-      App Container
-      <p>{uri}</p>
+      {/* App Container */}
+      {/* <p>{uri}</p> */}
       {container}
     </div>
   );
