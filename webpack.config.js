@@ -27,6 +27,10 @@ module.exports = {
         target: 'http://localhost:3000',
         logLevel: 'debug',
       },
+      '/matches/*': {
+        target: 'http://localhost:3000',
+        logLevel: 'debug',
+      },
     },
     compress: true,
   },

@@ -58,7 +58,7 @@ authController.getLanguages = async (req, res, next) => {
     });
     const languageTotals = {};
     const repos = await response.json();
-    repos.map(async (repo) => {
+    const resp = await repos.map(async (repo) => { // repos
       response = await fetch(`${repo.url}/languages`, {
         method: 'GET',
         headers: {
@@ -71,9 +71,14 @@ authController.getLanguages = async (req, res, next) => {
         if (languageTotals[language]) languageTotals[language] += response[language];
         else languageTotals[language] = response[language];
       });
-      res.locals.languages = languageTotals;
+      //res.locals.languages = languageTotals;
+      // console.log('Language Total Agg', languageTotals)
     });
-    return next();
+    Promise.allSettled(resp)
+      .then(async (values) => {
+        res.locals.languages = languageTotals;
+        return next();
+      });
   } catch (err) {
     return next({
       log: `Error in authController.getLanguages Err: ${err.message}`,

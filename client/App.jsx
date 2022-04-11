@@ -20,7 +20,7 @@ function App() {
     }
     if (endPoint === 'matches') {
       setContainer(<Matches />);
-      setNav(<Nav />);
+      setNav(<Nav />); 
     }
     if (endPoint === 'profile') {
       setContainer(<Profile />);
@@ -31,8 +31,8 @@ function App() {
   return (
     <div id="landingContainer">
       {nav}
-      App Container
-      <p>{uri}</p>
+      {/* App Container */}
+      {/* <p>{uri}</p> */}
       {container}
     </div>
   );

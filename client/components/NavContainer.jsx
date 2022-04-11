@@ -2,7 +2,7 @@ import React from 'react';
 
 function NavContainer() {
   return (
-    <div>
+    <div id="navbar">
       <a href="/?program">Pair</a>
       <a href="/?matches">Matches</a>
       <a href="/?profile">Profile</a>
